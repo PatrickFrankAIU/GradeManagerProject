@@ -7,5 +7,5 @@ Participants:
 - Sharon Reed
 - Aidan Murphy
 
-<a href="https://patrickfrankaiu.github.io/GradeManagerProject/" target="_blank">Live Site Link</a>
+[Live Site Link](https://patrickfrankaiu.github.io/GradeManagerProject/)
 
