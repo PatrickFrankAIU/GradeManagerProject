@@ -6,3 +6,5 @@ Participants:
 - Penny Johnston
 - Sharon Reed
 - Aidan Murphy
+
+Live Site: https://patrickfrankaiu.github.io/GradeManagerProject/
