@@ -7,5 +7,6 @@ Participants:
 - Sharon Reed
 - Aidan Murphy
 
+This site is hosted on GitHub Pages. 
 [Live Site Link](https://patrickfrankaiu.github.io/GradeManagerProject/)
 
