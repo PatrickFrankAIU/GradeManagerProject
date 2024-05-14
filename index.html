@@ -11,6 +11,16 @@
     <form id="gradeForm">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" required placeholder="Type your first name"><br><br>
+
+        <label for="">Type of Assignment:</label>
+        <select name="assignmentType" id="assignmentType">
+            <option value=""></option>
+            <option value="test">Test</option>
+            <option value="quiz">Quiz</option>
+            <option value="assignment">Assignment</option>
+            <option value="homework">Homework</option>
+        </select><br><br>
+
         <label for="grade">Grade:</label>
         <input type="number" id="grade" name="grade" required min="0" max="100" placeholder="Between 0 and 100"><br><br>
         
