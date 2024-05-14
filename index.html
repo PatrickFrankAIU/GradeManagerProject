@@ -6,16 +6,20 @@
     <title>Grade Manager</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 </head>
 <body>
-    <form>
+    <form id="gradeForm">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" required><br><br>
         <label for="grade">Grade:</label>
         <input type="number" id="grade" name="grade" required min="0" max="100"><br><br>
+        
+        <div id="formErrors"></div>
         <button type="submit">Submit</button>
+        <button type="button" onclick="clearForm()">Clear Form</button>
     </form>
     <div id="output"></div>
+
+    <script src='main.js'></script>
     </body>
 </html>
