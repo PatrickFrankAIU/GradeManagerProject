@@ -11,7 +11,7 @@ function addGrade(event) {
     }
 
     gradeBook.push({ name: studentName, className: className, assignmentType: assignmentType, grade: grade });
-    
+
     document.getElementById("gradeForm").reset();
 }
 
@@ -34,8 +34,10 @@ function calculateAverageGrade() {
 //add event listener for submit button
 document.getElementById('gradeForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    let firstName = document.getElementById('firstName').value;
+    let firstName = document.getElementById('studentName').value;
     let grade = parseFloat(document.getElementById('grade').value);
+    let assignmentType = document.getElementById("assignmentType").value;
+    let className = document.getElementById("className").value;
 
     let nameRegex = /^[A-Za-z]+$/;        //regex to validate first name
     if (!nameRegex.test(firstName)) {
@@ -52,7 +54,7 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
         document.getElementById('formErrors').innerHTML = '';        //again, clear any previous error message
     }
 
-    addGrade(firstName, grade);
+    addGrade(studentName, grade, assignmentType, className);
     displayResults();
 });
 
@@ -66,7 +68,7 @@ function displayResults() {
         html += '<p>No grades listed yet.</p>';
     } else {
         gradeBook.forEach(student => {
-            html += `<li>Name: ${student.name}/Grade: ${student.grade} on ${student.assignmentType} in ${student.className}</li>`;
+            html += `<li>Name: ${student.studentName}/Grade: ${student.grade} on ${student.assignmentType} in ${student.className}</li>`;
         });
     }
 
