@@ -1,8 +1,19 @@
-let gradeBook = [];
+function addGrade(event) {
+    event.preventDefault();
+    const studentName= document.getElementById("studentName").value;
+    const className = document.getElementById("className").value;
+    const assignmentType = document.getElementById("assignmentType").value;
+    const grade = parseFloat(document.getElementById)("grade").value;
 
-function addGrade(name, grade) {
-    gradeBook.push({name: name, grade: grade});           //push object
-    gradeBook.sort((a, b) => a.grade - b.grade);          //sort array after grading
+    if (!gradeBook[className]) {
+        gradeBook[className] = {};
+    }
+    if(!gradeBook[className][assignmentType]) {
+        gradeBook[className][assignmentType] = [];
+    }
+    gradeBook[className][assignmentType].push({name: studentName, grade: grade});
+
+    document.getElementById("gradeForm").reset();
 }
 
 
