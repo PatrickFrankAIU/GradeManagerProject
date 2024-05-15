@@ -8,6 +8,7 @@ h1 {
     text-align: center;
     background-color: rgb(18, 96, 148);
     padding: 10px;
+    margin: 0 0 10px;
 }
 
 .gradeInput {
