@@ -123,7 +123,7 @@ function displayResults() {
         html += '<p>No grades listed yet.</p>';
     } else {
         gradeBook.forEach(student => {
-            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br><br>`;
+            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>\n\n`;
         });
     }
 
