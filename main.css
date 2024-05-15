@@ -34,6 +34,16 @@ input, textarea, select {
 }
 .buttons > button {
     background-color: rgb(18, 96, 148);
-    border-radius: 10px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    width: 100px;
+    padding: 5px;
+    font-style: bold;
+    cursor: pointer;
+}
+
+#submit {
+    margin-right: 20px;
 }
 
