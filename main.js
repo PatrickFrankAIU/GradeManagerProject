@@ -1,3 +1,10 @@
+let gradebook = [];
+const weights = {
+    test: 0.45,
+    quiz: 0.35,
+    homework: 0.20
+};
+
 function addGrade(event) {
     event.preventDefault();
     const studentName= document.getElementById("studentName").value;
@@ -10,38 +17,83 @@ function addGrade(event) {
         return;
     }
 
-    gradeBook.push({ name: studentName, className: className, assignmentType: assignmentType, grade: grade });
+    gradeBook.push({ studentName: studentName, className: className, assignmentType: assignmentType, grade: grade });
+    gradeBook.sort((a, b) => a.grade - b.grade);
 
     document.getElementById("gradeForm").reset();
 }
 
 
-//function that calculates average grade
-function calculateAverageGrade() {
+//function that calculates weighted average grade
+function calculateWeightedAverageGrade() {
     if (gradeBook.length === 0) {
         return "There are no grades listed to calculate an average grade.";       //if no grades listed
     }
 
-    let totalGrade = 0;
+    let weightedTotal = 0;
+    let totalWeight = 0;
+
     gradeBook.forEach(student => {
-        totalGrade += student.grade;
+        switch (student.assignmentType) {
+            case 'test':
+                weightedTotal += student.grade * testWeight;
+                totalWeight += testWeight;
+                break;
+            case 'quiz':
+                weightedTotal += student.grade * quizWeight;
+                totalWeight += quizWeight;
+                break;
+            case 'homework':
+                weightedTotal += student.grade * homeworkWeight;
+                totalWeight += homeworkWeight;
+                break;
+        }
     });
 
-    return totalGrade / gradeBook.length;
+    let weightedAverageGrade = weightedTotal / totalWeight;
+    displayResults(weightedAverageGrade);
+}
+
+
+//function that handles assignment type
+function selectAssignmentType() {
+    let assignmentType = document.getElementById('assignmentType').value;
+    let testWeight;
+    let quizWeight;
+    let homeworkWeight;
+
+    switch (assignmentType) {
+        case 'test': 
+            testWeight = 0.45;
+            break;
+        case 'quiz':
+            quizWeight = 0.35;
+            break;
+        case 'homework': 
+            homeworkWeight = 0.20;
+            break;
+        default:
+            testWeight = 0.0;
+            quizWeight = 0.0;
+            homeworkWeight = 0.0;
+            break;
+    }
+
+    calculateWeightedAverageGrade(testWeight, quizWeight, homeworkWeight);
 }
 
 
 //add event listener for submit button
 document.getElementById('gradeForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    let firstName = document.getElementById('studentName').value;
+    let studentName = document.getElementById('studentName').value;
     let grade = parseFloat(document.getElementById('grade').value);
     let assignmentType = document.getElementById("assignmentType").value;
     let className = document.getElementById("className").value;
 
     let nameRegex = /^[A-Za-z]+$/;        //regex to validate first name
-    if (!nameRegex.test(firstName)) {
-        document.getElementById('formErrors').innerHTML = '<li>Please enter a valid first name with only letters.</li>';
+    if (!nameRegex.test(studentName)) {
+        document.getElementById('formErrors').innerHTML = '<li>Please enter a valid name with only letters.</li>';
         return;
     } else {
         document.getElementById('formErrors').innerHTML = '';       //clear any previous error message
@@ -73,8 +125,8 @@ function displayResults() {
     }
 
     html += '<h3>Results:</h3>';
-    const averageGrade = calculateAverageGrade();
-    html += `<li>Average Grade: ${averageGrade}</li>`;
+    const averageGrade = calculateWeightedAverageGrade();
+    html += `<li>Weighted Average Grade: ${weightedAverageGrade.toFixed(2)}</li>`;
 
     document.getElementById('output').innerHTML = html;
 }
