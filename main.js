@@ -1,10 +1,13 @@
+let gradeBook = [];
+
 function addGrade(event) {
-    event.preventDefault();
     const studentName= document.getElementById("studentName").value;
     const className = document.getElementById("className").value;
     const assignmentType = document.getElementById("assignmentType").value;
     const grade = parseFloat(document.getElementById("grade").value);
 
+
+    let nameRegex = /^[A-Za-z]+$/;
     if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
         alert('Please enter valid values for all fields.');
         return;
@@ -34,13 +37,13 @@ function calculateAverageGrade() {
 //add event listener for submit button
 document.getElementById('gradeForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    let firstName = document.getElementById('studentName').value;
+    let studentName = document.getElementById('studentName').value;
     let grade = parseFloat(document.getElementById('grade').value);
     let assignmentType = document.getElementById("assignmentType").value;
     let className = document.getElementById("className").value;
 
     let nameRegex = /^[A-Za-z]+$/;        //regex to validate first name
-    if (!nameRegex.test(firstName)) {
+    if (!nameRegex.test(studentName)) {
         document.getElementById('formErrors').innerHTML = '<li>Please enter a valid first name with only letters.</li>';
         return;
     } else {
@@ -68,7 +71,7 @@ function displayResults() {
         html += '<p>No grades listed yet.</p>';
     } else {
         gradeBook.forEach(student => {
-            html += `<li>Name: ${student.studentName}/Grade: ${student.grade} on ${student.assignmentType} in ${student.className}</li>`;
+            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>`;
         });
     }
 
