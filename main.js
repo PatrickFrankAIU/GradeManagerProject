@@ -5,13 +5,16 @@ const weights = {
     homework: 0.20
 };
 
+let gradeBook = [];
+
 function addGrade(event) {
-    event.preventDefault();
     const studentName= document.getElementById("studentName").value;
     const className = document.getElementById("className").value;
     const assignmentType = document.getElementById("assignmentType").value;
     const grade = parseFloat(document.getElementById("grade").value);
 
+
+    let nameRegex = /^[A-Za-z]+$/;
     if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
         alert('Please enter valid values for all fields.');
         return;
@@ -120,7 +123,7 @@ function displayResults() {
         html += '<p>No grades listed yet.</p>';
     } else {
         gradeBook.forEach(student => {
-            html += `<li>Name: ${student.studentName}/Grade: ${student.grade} on ${student.assignmentType} in ${student.className}</li>`;
+            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>`;
         });
     }
 
