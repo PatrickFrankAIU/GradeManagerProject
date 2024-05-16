@@ -134,9 +134,9 @@ function displayResults() {
         html += '</table>';
     }
 
-    html += '<h3>Results:</h3>';
+    /* html += '<h3>Results:</h3>';
     const averageGrade = calculateWeightedAverageGrade();
-    html += `<li>Weighted Average Grade: ${calculateWeightedAverageGrade}</li>`;
+    html += `<li>Weighted Average Grade: ${calculateWeightedAverageGrade}</li>`;*/
 
     document.getElementById('output').innerHTML = html;
 }
