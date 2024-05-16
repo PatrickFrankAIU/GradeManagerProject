@@ -7,12 +7,11 @@ const weights = {
 
 let gradeBook = [];
 
-function addGrade(event) {
-    const studentName= document.getElementById("studentName").value;
-    const className = document.getElementById("className").value;
-    const assignmentType = document.getElementById("assignmentType").value;
-    const grade = parseFloat(document.getElementById("grade").value);
-
+function addGrade(studentName, className, assignmentType, grade) {
+    gradeBook.push({studentName, className, assignmentType, grade});
+    gradeBook.sort((a, b) => a.grade - b.grade);
+    document.getElementById('gradeForm').reset();
+    document.getElementById('studentName').focus();
 
     let nameRegex = /^[A-Za-z]+$/;
     if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
