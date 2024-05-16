@@ -53,7 +53,7 @@ function calculateWeightedAverageGrade() {
     });
 
     let weightedAverageGrade = weightedTotal / totalWeight;
-    displayResults(weightedAverageGrade);
+    return weightedAverageGrade;
 }
 
 
@@ -108,7 +108,7 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
         document.getElementById('formErrors').innerHTML = '';        //again, clear any previous error message
     }
 
-    addGrade(studentName, grade, assignmentType, className);
+    addGrade(studentName, className, assignmentType, grade);
     displayResults();
 });
 
@@ -121,9 +121,12 @@ function displayResults() {
     if (gradeBook.length === 0) {
         html += '<p>No grades listed yet.</p>';
     } else {
+        html += '<table>';
+        html += '<tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th></tr>';
         gradeBook.forEach(student => {
-            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>\n\n`;
+            html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td></tr>`;
         });
+        html += '</table>';
     }
 
     html += '<h3>Results:</h3>';
