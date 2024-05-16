@@ -12,7 +12,12 @@ let gradeBook = [];
 
 function addGrade(studentName, className, assignmentType, grade) {
 
-    /* let nameRegex = /^[A-Za-z]+$/;
+    /* gradeBook.push({studentName, className, assignmentType, grade});
+    gradeBook.sort((a, b) => a.grade - b.grade);
+    document.getElementById('gradeForm').reset();
+    document.getElementById('studentName').focus();
+
+    let nameRegex = /^[A-Za-z]+$/;
     if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
         alert('Please enter valid values for all fields.');
         return;
