@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function() {
+
+
 let gradebook = [];
 const weights = {
     test: 0.45,
@@ -7,23 +10,19 @@ const weights = {
 
 let gradeBook = [];
 
-function addGrade(event) {
-    const studentName= document.getElementById("studentName").value;
-    const className = document.getElementById("className").value;
-    const assignmentType = document.getElementById("assignmentType").value;
-    const grade = parseFloat(document.getElementById("grade").value);
+function addGrade(studentName, className, assignmentType, grade) {
 
-
-    let nameRegex = /^[A-Za-z]+$/;
+    /* let nameRegex = /^[A-Za-z]+$/;
     if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
         alert('Please enter valid values for all fields.');
         return;
-    }
+    } */
 
-    gradeBook.push({ studentName: studentName, className: className, assignmentType: assignmentType, grade: grade });
+    gradeBook.push({ studentName, className, assignmentType, grade });
     gradeBook.sort((a, b) => a.grade - b.grade);
 
     document.getElementById("gradeForm").reset();
+    document.getElementById("studentName").focus();
 }
 
 
@@ -54,7 +53,7 @@ function calculateWeightedAverageGrade() {
     });
 
     let weightedAverageGrade = weightedTotal / totalWeight;
-    displayResults(weightedAverageGrade);
+    return weightedAverageGrade;
 }
 
 
@@ -109,7 +108,7 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
         document.getElementById('formErrors').innerHTML = '';        //again, clear any previous error message
     }
 
-    addGrade(studentName, grade, assignmentType, className);
+    addGrade(studentName, className, assignmentType, grade);
     displayResults();
 });
 
@@ -123,13 +122,13 @@ function displayResults() {
         html += '<p>No grades listed yet.</p>';
     } else {
         gradeBook.forEach(student => {
-            html += `Name: ${student.name}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>\n\n`;
+            html += `Name: ${student.studentName}<br> Grade: ${student.grade}<br> Class: ${student.className}<br> Assignment: ${student.assignmentType}<br>\n\n`;
         });
     }
 
     html += '<h3>Results:</h3>';
     const averageGrade = calculateWeightedAverageGrade();
-    html += `<li>Weighted Average Grade: ${weightedAverageGrade.toFixed(2)}</li>`;
+    html += `<li>Weighted Average Grade: ${calculateWeightedAverageGrade}</li>`;
 
     document.getElementById('output').innerHTML = html;
 }
@@ -140,6 +139,8 @@ function clearForm() {
     document.getElementById('gradeForm').reset();
     gradeBook = [];      // clears array
     document.getElementById('output').innerHTML = ''; // clear output div
+    document.getElementById("studentName").focus();
 }
 
 
+});
