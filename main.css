@@ -29,10 +29,11 @@ input, textarea, select {
     width: 150px;
     padding: 5px;
    }
-   
+
 .buttons{
     text-align: center;
 }
+
 .buttons > button {
     background-color: rgb(18, 96, 148);
     border-radius: 4px;

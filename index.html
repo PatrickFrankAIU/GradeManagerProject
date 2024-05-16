@@ -12,10 +12,10 @@
         <h1>Grade Manager</h1>
     <form id="gradeForm">
         <label for="studentName">First Name:</label>
-        <input type="text" id="studentName" name="stuName" required placeholder="Type your first name"><br><br>
+        <input type="text" id="studentName" name="stuName" required placeholder="Type your first name" autofocus><br><br>
 
         <label for="className">Class</label>
-        <select name="className" id="className">
+        <select name="className" id="className" required>
             <option value="" selected disabled></option>
             <option value="Math">Math</option>
             <option value="English">English</option>
@@ -23,14 +23,14 @@
             <option value="History">History</option>
         </select><br><br>
 
-        <label for="">Type of Assignment:</label>
-        <select name="assignmentType" id="assignmentType">
+        <label for="">Assignment Type:</label>
+        <select name="assignmentType" id="assignmentType" required>
             <option value=""></option>
             <option value="Test">Test</option>
             <option value="Quiz">Quiz</option>
             <option value="Homework">Homework</option>
         </select><br><br>
-            
+
         <label for="grade">Grade:</label>
         <input type="number" id="grade" name="grade" required min="0" max="100" placeholder="Between 0 and 100"><br><br>
         
