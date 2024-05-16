@@ -126,13 +126,14 @@ function displayResults() {
     if (gradeBook.length === 0) {
         html += '<p>No grades listed yet.</p>';
     } else {
-        html += '<table>';
+        html += '<table id="gradeTable" class="custom-table">';
         html += '<tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th></tr>';
         gradeBook.forEach(student => {
             html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td></tr>`;
         });
         html += '</table>';
     }
+
 
     /* html += '<h3>Results:</h3>';
     const averageGrade = calculateWeightedAverageGrade();
