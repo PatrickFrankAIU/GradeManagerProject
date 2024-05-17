@@ -1,3 +1,21 @@
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(18, 96, 148);
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+header p {
+    color: white;
+    font-size: 14px;
+    margin-top: 0;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -12,6 +30,7 @@ h1 {
 }
 
 .gradeInput {
+    position: relative;
     text-align: left;
     margin: 5px;
     font-size: 13px;
@@ -47,4 +66,10 @@ input, textarea, select {
 
 #submit {
     margin-right: 20px;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
