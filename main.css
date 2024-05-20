@@ -43,6 +43,9 @@ h1 {
     margin: 0 0 10px;
 }
 
+/* h3 {
+    margin-left: 20px;
+} */
 .gradeInput {
     position: relative;
     text-align: left;
@@ -85,7 +88,24 @@ input, textarea, select {
 table {
     width: 80%;
     margin: 20px auto;
+    border-collapse: collapse;
+}
 
+th {
+    text-align: center;
+    padding: 10px;
+    background: #e5e4e2;
+    border: 1px solid #e5e4e2;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+tr:nth-child(2n+3) {
+    background-color: #f3f8fc;
 }
 
 footer {
@@ -93,6 +113,5 @@ footer {
     width: 100%;
     bottom: 0;
     text-align: center;
-    background-color: rgb(18, 96, 148);
-    color: white;
+    background-color: #e5e4e2;
 }
