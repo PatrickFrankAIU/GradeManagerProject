@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-
+//Sets weights for seperate assignment types
 let gradebook = [];
 const weights = {
     test: 0.45,
@@ -11,17 +11,6 @@ const weights = {
 let gradeBook = [];
 
 function addGrade(studentName, className, assignmentType, grade) {
-
-    /* gradeBook.push({studentName, className, assignmentType, grade});
-    gradeBook.sort((a, b) => a.grade - b.grade);
-    document.getElementById('gradeForm').reset();
-    document.getElementById('studentName').focus();
-
-    let nameRegex = /^[A-Za-z]+$/;
-    if (!nameRegex.test(studentName) || !className.trim() || !assignmentType.trim() || isNaN(grade) || grade < 0 || grade > 100) {
-        alert('Please enter valid values for all fields.');
-        return;
-    } */
 
     gradeBook.push({ studentName, className, assignmentType, grade });
     gradeBook.sort((a, b) => a.grade - b.grade);
@@ -39,6 +28,7 @@ function calculateWeightedAverageGrade() {
 
     let weightedTotal = 0;
     let totalWeight = 0;
+
 
     gradeBook.forEach(student => {
         switch (student.assignmentType) {
@@ -118,7 +108,7 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
 });
 
 
-//function to display results
+//function to display results and places them into a table
 function displayResults() {
     let html = '<h3>Students:</h3>';
 
@@ -133,11 +123,6 @@ function displayResults() {
         });
         html += '</table>';
     }
-
-
-    /* html += '<h3>Results:</h3>';
-    const averageGrade = calculateWeightedAverageGrade();
-    html += `<li>Weighted Average Grade: ${calculateWeightedAverageGrade}</li>`;*/
 
     document.getElementById('output').innerHTML = html;
 }
