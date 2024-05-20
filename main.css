@@ -43,6 +43,9 @@ h1 {
     margin: 0 0 10px;
 }
 
+/* h3 {
+    margin-left: 20px;
+} */
 .gradeInput {
     position: relative;
     text-align: left;
@@ -91,8 +94,8 @@ table {
 th {
     text-align: center;
     padding: 10px;
-    border: 1px solid #d3d3d3;
     background: #e5e4e2;
+    border: 1px solid #e5e4e2;
 }
 
 td {
