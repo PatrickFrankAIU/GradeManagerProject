@@ -1,8 +1,10 @@
 header {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     background-color: rgb(18, 96, 148);
     text-align: center;
+    top: 0;
+    position: fixed;
 }
 
 header h1 {
@@ -18,6 +20,12 @@ header p {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 h1 {
@@ -32,7 +40,7 @@ h1 {
 .gradeInput {
     position: relative;
     text-align: left;
-    margin: 5px;
+    margin: 5px 5px 10px 5px;
     font-size: 13px;
     width: 400px;
     border: 1px solid #777777;
@@ -68,8 +76,14 @@ input, textarea, select {
     margin-right: 20px;
 }
 
+table {
+    width: 80%;
+    margin-top: 20px auto 0 auto;
+
+}
 footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    text-align: center;
 }
