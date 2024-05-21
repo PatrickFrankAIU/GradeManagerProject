@@ -1,15 +1,10 @@
+//JavaScript runs only after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-//Sets weights for seperate assignment types
-let gradebook = [];
-const weights = {
-    test: 0.45,
-    quiz: 0.35,
-    homework: 0.20
-};
+//empty array to store grade entries
+    let gradeBook = [];     
 
-let gradeBook = [];
-
+//function to add new grade entries and sort by grades
 function addGrade(studentName, className, assignmentType, grade) {
 
     gradeBook.push({ studentName, className, assignmentType, grade });
@@ -20,82 +15,25 @@ function addGrade(studentName, className, assignmentType, grade) {
 }
 
 
-//function that calculates weighted average grade
-function calculateWeightedAverageGrade() {
-    if (gradeBook.length === 0) {
-        return "There are no grades listed to calculate an average grade.";       //if no grades listed
-    }
-
-    let weightedTotal = 0;
-    let totalWeight = 0;
-
-
-    gradeBook.forEach(student => {
-        switch (student.assignmentType) {
-            case 'test':
-                weightedTotal += student.grade * testWeight;
-                totalWeight += testWeight;
-                break;
-            case 'quiz':
-                weightedTotal += student.grade * quizWeight;
-                totalWeight += quizWeight;
-                break;
-            case 'homework':
-                weightedTotal += student.grade * homeworkWeight;
-                totalWeight += homeworkWeight;
-                break;
-        }
-    });
-
-    let weightedAverageGrade = weightedTotal / totalWeight;
-    return weightedAverageGrade;
-}
-
-
-//function that handles assignment type
-function selectAssignmentType() {
-    let assignmentType = document.getElementById('assignmentType').value;
-    let testWeight;
-    let quizWeight;
-    let homeworkWeight;
-
-    switch (assignmentType) {
-        case 'test': 
-            testWeight = 0.45;
-            break;
-        case 'quiz':
-            quizWeight = 0.35;
-            break;
-        case 'homework': 
-            homeworkWeight = 0.20;
-            break;
-        default:
-            testWeight = 0.0;
-            quizWeight = 0.0;
-            homeworkWeight = 0.0;
-            break;
-    }
-
-    calculateWeightedAverageGrade(testWeight, quizWeight, homeworkWeight);
-}
-
-
-//add event listener for submit button
+//add event listener for form submission  
 document.getElementById('gradeForm').addEventListener('submit', function(event) {
     event.preventDefault();
+
+    //retrieve values
     let studentName = document.getElementById('studentName').value;
     let grade = parseFloat(document.getElementById('grade').value);
     let assignmentType = document.getElementById("assignmentType").value;
     let className = document.getElementById("className").value;
 
-    let nameRegex = /^[A-Za-z]+$/;        //regex to validate first name
+    //regex to validate first name
+    let nameRegex = /^[A-Za-z]+$/;        
     if (!nameRegex.test(studentName)) {
         document.getElementById('formErrors').innerHTML = '<li>Please enter a valid name with only letters.</li>';
         return;
     } else {
         document.getElementById('formErrors').innerHTML = '';       //clear any previous error message
     }
-
+    //ensures grade is a # between 0 - 100.
     if (isNaN(grade) || grade < 0 || grade > 100) {
         document.getElementById('formErrors').innerHTML = '<li>Please enter a valid grade between 0 and 100.</li>';
         return;
@@ -103,12 +41,13 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
         document.getElementById('formErrors').innerHTML = '';        //again, clear any previous error message
     }
 
+    //calls addGrade to add new grade to gradeBook; calls displayResults to update displayed list of grades.
     addGrade(studentName, className, assignmentType, grade);
     displayResults();
 });
 
 
-//function to display results and places them into a table
+//function to display results and place them into a table
 function displayResults() {
     let html = '<h3>Students:</h3>';
 
@@ -128,11 +67,11 @@ function displayResults() {
 }
 
 
-//function to clear form
+//function to clear form and reset gradeBook array
 function clearForm() {
     document.getElementById('gradeForm').reset();
-    gradeBook = [];      // clears array
-    document.getElementById('output').innerHTML = ''; // clear output div
+    gradeBook = [];      
+    document.getElementById('output').innerHTML = '';
     document.getElementById("studentName").focus();
 }
 
