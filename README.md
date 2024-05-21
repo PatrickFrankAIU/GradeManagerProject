@@ -8,4 +8,5 @@ Participants:
 - Aidan Murphy
 
 This site is hosted on GitHub Pages. 
-[Live Site Link](https://patrickfrankaiu.github.io/GradeManagerProject/)
+<a href="https://patrickfrankaiu.github.io/GradeManagerProject/" target="_blank">Live Site Link</a>
+
