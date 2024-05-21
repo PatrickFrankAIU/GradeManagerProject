@@ -75,7 +75,7 @@ function displayResults() {
                 html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td><td>${student.comments}</td></tr>`;
 
             });
-            html +='<thead><tr><th>Average</th>   <th></th>   <th></th>   <th id="averageGradeValue"></th></tr></thead>'
+            html +='<thead><tr><th>Average</th><th></th><th></th><th></th><th id="averageGradeValue"></th></tr></thead>'
             html += '</tbody></table>';
     }
 
