@@ -96,6 +96,7 @@ th {
     padding: 10px;
     background: #e5e4e2;
     border: 1px solid #e5e4e2;
+    cursor: pointer;
 }
 
 td {
