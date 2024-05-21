@@ -49,17 +49,18 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
 
 //function to display results and place them into a table
 function displayResults() {
-    let html = '<h3></h3>';         //unnecessary 
+    let html = '<h3></h3>';         //code breaks if removed 
 
     if (gradeBook.length === 0) {
         html += '<p>No grades listed yet.</p>';
     } else {
         html += '<table id="gradeTable">';
-            html += '<thead><tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th><th>Average</th></tr></thead>';
+            html += '<thead><tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th></tr></thead>';
             html += '<tbody>';
             gradeBook.forEach(student => {
-                html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td><td>***</td></tr>`;
+                html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td><td></td></tr>`;
             });
+            html +='<thead><tr><th>Average</th>   <th></th>   <th></th>   <th id="averageGradeValue"></th></tr></thead>'
             html += '</tbody></table>';
     }
 
@@ -67,7 +68,7 @@ function displayResults() {
     calculateAverageGrade();
 }
 
-//function to calculate average grade
+//function to calculate average grade 
 function calculateAverageGrade() {
     let total = gradeBook.reduce((sum, student) => sum + student.grade, 0);
     let average = total / gradeBook.length;
