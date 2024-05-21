@@ -49,31 +49,37 @@ document.getElementById('gradeForm').addEventListener('submit', function(event) 
 
 //function to display results and place them into a table
 function displayResults() {
-    let html = '<h3>Students:</h3>';
-
+    let html = '<h3></h3>';         //unnecessary 
 
     if (gradeBook.length === 0) {
         html += '<p>No grades listed yet.</p>';
     } else {
         html += '<table id="gradeTable">';
-        html += '<tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th></tr>';
-        gradeBook.forEach(student => {
-            html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td></tr>`;
-        });
-        html += '</table>';
+            html += '<thead><tr><th>Name</th><th>Class</th><th>Assignment</th><th>Grade</th><th>Average</th></tr></thead>';
+            html += '<tbody>';
+            gradeBook.forEach(student => {
+                html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td><td>***</td></tr>`;
+            });
+            html += '</tbody></table>';
     }
 
     document.getElementById('output').innerHTML = html;
+    calculateAverageGrade();
 }
 
-
-//function to clear form and reset gradeBook array
-function clearForm() {
-    document.getElementById('gradeForm').reset();
-    gradeBook = [];      
-    document.getElementById('output').innerHTML = '';
-    document.getElementById("studentName").focus();
+//function to calculate average grade
+function calculateAverageGrade() {
+    let total = gradeBook.reduce((sum, student) => sum + student.grade, 0);
+    let average = total / gradeBook.length;
+    document.getElementById('averageGradeValue').innerText = average.toFixed(2);
 }
-
 
 });
+
+    //function to clear form and reset gradeBook array
+    function clearForm() {
+        document.getElementById('gradeForm').reset();
+        gradeBook = [];      
+        document.getElementById('output').innerHTML = '';
+        document.getElementById("studentName").focus();
+    }
