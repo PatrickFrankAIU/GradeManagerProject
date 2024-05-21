@@ -6,6 +6,7 @@
     <title>Grade Manager</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://cdn.tiny.cloud/1/yafpsojtkfnxuw26kj1y0xm49chmz3ejfrwb7i70ar2iajw6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <header>
@@ -56,10 +57,14 @@
                     <th>Class</th>
                     <th>Assignment</th>
                     <th>Grade</th>
+
                 </tr>
                 <tr>
                     <th style="display:none">Average</th>
                     <th id="averageGradeValue"></th>
+                    <th>Comments</th>
+                        <label for="mytextarea">Comments:</label>
+                        <textarea id="mytextarea"></textarea><br><br>
                 </tr>
             </thead>
             <tbody>
@@ -67,6 +72,7 @@
             </tbody>
         </table>
     </div>
+    
     <script src='main.js'></script>
     </body>
     <footer>
