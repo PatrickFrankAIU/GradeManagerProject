@@ -75,7 +75,7 @@ function displayResults() {
                 html += `<tr><td>${student.studentName}</td><td>${student.className}</td><td>${student.assignmentType}</td><td>${student.grade}</td><td>${student.comments}</td></tr>`;
 
             });
-            html +='<thead><tr><th>Average</th><th></th><th></th><th></th><th id="averageGradeValue"></th></tr></thead>'
+            html +='<thead><tr><th>Average</th>   <th></th>   <th></th>   <th id="averageGradeValue"></th></tr></thead>'
             html += '</tbody></table>';
     }
 
@@ -94,8 +94,14 @@ function calculateAverageGrade() {
 
     //function to clear form and reset gradeBook array
     function clearForm() {
-        document.getElementById('gradeForm').reset(); 
-        tinymce.get('mytextarea').setContent(''); 
-        document.getElementById("studentName").focus(); 
+        document.getElementById('gradeForm').reset();
+        tinymce.get('mytextarea').setContent('');
+        document.getElementById("studentName").focus();
     }
 
+    window.resetGrades = function() {
+        document.getElementById('gradeForm').reset();
+        gradeBook = [];
+        document.getElementById('output').innerHTML = '';
+        document.getElementById("studentName").focus();
+    }
