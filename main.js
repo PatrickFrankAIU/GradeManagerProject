@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         width: '400px',
-        height: '20px',
+        height: '120px',
         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image',
         menubar: false  // This removes the menu bar
     });
@@ -106,3 +106,12 @@ function calculateAverageGrade() {
         document.getElementById('output').innerHTML = '';
         document.getElementById("studentName").focus();
     }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
