@@ -58,12 +58,12 @@ h1 {
 }
 label {
     display:inline-block;
-    width: 200px;
+    width: 130px;
     margin-left: 10px;
    }
 
 input, textarea, select {
-    width: 150px;
+    width: 230px;
     padding: 5px;
    }
 
