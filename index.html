@@ -40,6 +40,10 @@
 
         <label for="grade">Grade:</label>
         <input type="number" id="grade" name="grade" required min="0" max="100" placeholder="Between 0 and 100"><br><br>
+
+        
+        <label for="mytextarea">Comments:</label>
+        <textarea id="mytextarea" name="mytextarea" rows="3" cols="50" placeholder="Enter comments here..."></textarea><br><br>
         
         <div id="formErrors"></div>
         <div class="buttons">
@@ -58,14 +62,12 @@
                     <th>Class</th>
                     <th>Assignment</th>
                     <th>Grade</th>
-
+                    <th>Comments</th>
                 </tr>
                 <tr>
                     <th style="display:none">Average</th>
                     <th id="averageGradeValue"></th>
-                    <th>Comments</th>
-                        <label for="mytextarea">Comments:</label>
-                        <textarea id="mytextarea"></textarea><br><br>
+                   
                 </tr>
             </thead>
             <tbody>
