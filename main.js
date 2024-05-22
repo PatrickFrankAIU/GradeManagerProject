@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selector: '#mytextarea',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
+        width: '250px',
         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image'
     });
 
@@ -24,6 +25,7 @@ function addGrade(studentName, className, assignmentType, grade, comments) {
     gradeBook.sort((a, b) => a.grade - b.grade);
 
     document.getElementById("gradeForm").reset();
+    tinymce.get('mytextarea').setContent('');
     document.getElementById("studentName").focus();
 }
 
