@@ -94,10 +94,8 @@ function calculateAverageGrade() {
 
     //function to clear form and reset gradeBook array
     function clearForm() {
-        document.getElementById('gradeForm').reset();
-        tinymce.get('mytextarea').setContent('');
-        gradeBook = [];      
-        document.getElementById('output').innerHTML = '';
-        document.getElementById("studentName").focus();
+        document.getElementById('gradeForm').reset(); 
+        tinymce.get('mytextarea').setContent(''); 
+        document.getElementById("studentName").focus(); 
     }
 
