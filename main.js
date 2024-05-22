@@ -8,11 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         width: '250px',
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image'
+        height: '20px',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image',
+        menubar: false  // This removes the menu bar
     });
-
-
-
 
 
 //empty array to store grade entries
