@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-
     tinymce.init({
         selector: '#mytextarea',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -13,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         menubar: false  // This removes the menu bar
     });
 
+    let gradeChart;
 
 //empty array to store grade entries
     let gradeBook = [];     
@@ -82,6 +82,7 @@ function displayResults() {
 
     document.getElementById('output').innerHTML = html;
     calculateAverageGrade();
+    updateChart();
 }
 
 //function to calculate average grade 
@@ -90,6 +91,64 @@ function calculateAverageGrade() {
     let average = total / gradeBook.length;
     document.getElementById('averageGradeValue').innerText = average.toFixed(2);
 }
+
+function updateChart() {
+    const labels = gradeBook.map(student => student.studentName);
+    const data = gradeBook.map(student => student.grade);
+    const ctx = document.getElementById('gradeChart').getContext('2d');
+
+
+       // Define different colors for each bar
+       const backgroundColors = gradeBook.map(student => {
+        if (student.grade >= 90) {
+            return 'rgba(75, 192, 192, 0.2)'; 
+        } else if (student.grade >= 80) {
+            return 'rgba(54, 162, 235, 0.2)';
+        } else if (student.grade >= 70) {
+            return 'rgba(255, 206, 86, 0.2)'; 
+        } else {
+            return 'rgba(255, 99, 132, 0.2)'; 
+        }
+    });
+
+    const borderColors = gradeBook.map(student => {
+        if (student.grade >= 90) {
+            return 'rgba(75, 192, 192, 1)'; 
+        } else if (student.grade >= 80) {
+            return 'rgba(54, 162, 235, 1)'; 
+        } else if (student.grade >= 70) {
+            return 'rgba(255, 206, 86, 1)'; 
+        } else {
+            return 'rgba(255, 99, 132, 1)'; 
+        }
+    });
+
+    if (gradeChart) {
+        gradeChart.destroy();
+    }
+    gradeChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Grades',
+                data: data,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+
 
 });
 
@@ -132,7 +191,6 @@ function calculateAverageGrade() {
       } else {
         console.log('Geolocation is not supported by this browser.');
       }
-
 
     //Intercept Page Refresh to Prevent Data Loss
     window.addEventListener('beforeunload', function(event) {
