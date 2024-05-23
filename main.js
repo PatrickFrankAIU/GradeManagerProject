@@ -100,31 +100,28 @@ function updateChart() {
 
        // Define different colors for each bar
        const backgroundColors = gradeBook.map(student => {
-        // Customize the color based on the grade or any other property
         if (student.grade >= 90) {
-            return 'rgba(75, 192, 192, 0.2)'; // Green for A grades
+            return 'rgba(75, 192, 192, 0.2)'; 
         } else if (student.grade >= 80) {
-            return 'rgba(54, 162, 235, 0.2)'; // Blue for B grades
+            return 'rgba(54, 162, 235, 0.2)';
         } else if (student.grade >= 70) {
-            return 'rgba(255, 206, 86, 0.2)'; // Yellow for C grades
+            return 'rgba(255, 206, 86, 0.2)'; 
         } else {
-            return 'rgba(255, 99, 132, 0.2)'; // Red for D or F grades
+            return 'rgba(255, 99, 132, 0.2)'; 
         }
     });
 
     const borderColors = gradeBook.map(student => {
         if (student.grade >= 90) {
-            return 'rgba(75, 192, 192, 1)'; // Green
+            return 'rgba(75, 192, 192, 1)'; 
         } else if (student.grade >= 80) {
-            return 'rgba(54, 162, 235, 1)'; // Blue
+            return 'rgba(54, 162, 235, 1)'; 
         } else if (student.grade >= 70) {
-            return 'rgba(255, 206, 86, 1)'; // Yellow
+            return 'rgba(255, 206, 86, 1)'; 
         } else {
-            return 'rgba(255, 99, 132, 1)'; // Red
+            return 'rgba(255, 99, 132, 1)'; 
         }
     });
-
-
 
     if (gradeChart) {
         gradeChart.destroy();
