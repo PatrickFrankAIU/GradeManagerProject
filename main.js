@@ -116,7 +116,6 @@ function calculateAverageGrade() {
         contextMenu.style.left = `${event.pageX}px`;
         contextMenu.style.top = `${event.pageY}px`;
     });
-
     document.addEventListener('click', function(event) {
         let contextMenu = document.getElementById('contextMenu');
         if (event.target.closest('#contextMenu') === null) {
@@ -133,3 +132,10 @@ function calculateAverageGrade() {
       } else {
         console.log('Geolocation is not supported by this browser.');
       }
+
+
+    //Intercept Page Refresh to Prevent Data Loss
+    window.addEventListener('beforeunload', function(event) {
+        event.preventDefault();
+        return 'Are you sure you want to leave? Your unsaved changes may be lost.'; // Display prompt message
+    });
