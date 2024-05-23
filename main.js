@@ -106,3 +106,19 @@ function calculateAverageGrade() {
         document.getElementById('output').innerHTML = '';
         document.getElementById("studentName").focus();
     }
+
+    // Context menu functionality
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        let contextMenu = document.getElementById('contextMenu');
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = `${event.pageX}px`;
+        contextMenu.style.top = `${event.pageY}px`;
+    });
+
+    document.addEventListener('click', function(event) {
+        let contextMenu = document.getElementById('contextMenu');
+        if (event.target.closest('#contextMenu') === null) {
+            contextMenu.style.display = 'none';
+        }
+    });
