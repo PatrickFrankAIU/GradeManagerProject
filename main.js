@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         width: '400px',
-        height: '20px',
+        height: '120px',
         toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image',
         menubar: false  // This removes the menu bar
     });
@@ -100,6 +100,7 @@ function calculateAverageGrade() {
         document.getElementById("studentName").focus();
     }
 
+    //reset for context menu
     window.resetGrades = function() {
         document.getElementById('gradeForm').reset();
         gradeBook = [];
@@ -107,7 +108,7 @@ function calculateAverageGrade() {
         document.getElementById("studentName").focus();
     }
 
-    // Context menu functionality
+    //context menu functionality
     document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
         let contextMenu = document.getElementById('contextMenu');
@@ -122,3 +123,13 @@ function calculateAverageGrade() {
             contextMenu.style.display = 'none';
         }
     });
+
+    //geolocation functionality 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        });
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
